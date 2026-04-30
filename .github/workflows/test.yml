@@ -9,7 +9,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout code
+      uses: actions/checkout@v4
 
     - name: Use Node.js
       uses: actions/setup-node@v4
@@ -19,6 +20,9 @@ jobs:
     - name: Install Dependencies
       run: npm install
 
+    - name: Fix Permissions
+      # Yeh command jest ko chalne ki permission dila degi
+      run: chmod +x ./node_modules/.bin/jest
+
     - name: Run Tests
-      # 'npx' use karne se permission ka masla hal ho jata hai
-      run: npx jest
+      run: npm run test
