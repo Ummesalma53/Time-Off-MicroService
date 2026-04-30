@@ -21,10 +21,9 @@ jobs:
         cache: 'npm'
 
     - name: Install dependencies
-      run: npm install
-
-    - name: Set permissions for Jest
-      run: chmod +x ./node_modules/.bin/jest
+      # 'npm ci' zyada behtar hai CI pipelines ke liye
+      run: npm ci
 
     - name: Run Tests
-      run: npm run test
+      # 'npx' use karne se path aur permissions ka masla hal ho jata hai
+      run: npx jest
